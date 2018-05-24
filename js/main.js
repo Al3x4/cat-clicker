@@ -1,17 +1,11 @@
-const cats = Array.from(document.querySelectorAll('.cat')), 
-	counterText = document.getElementById('counter-text'); 
-let	counter = 0;
-
-
-
-function flash(e) {
-	e.target.setAttribute('src', 'img/cat.svg');
-}
+const 	cats = Array.from(document.querySelectorAll('.cat')), 
+counters = Array.from(document.querySelectorAll('.counter')); 
+let n = 0; //this little variable will temporarily stopre the inside of the cat clicker counter, inclrease by 1 on click and then become the inner text of the counter
 
 cats.forEach(function(cat, index){
 	cat.addEventListener('mousedown', function(e) {
-		counter += 1;
-		counterText.innerText = counter; 
+		n = Number(counters[index].innerText) + 1;
+		counters[index].innerText = n;
 		e.target.setAttribute('src', `img/cat${index}-click.svg`);
 	});
 	cat.addEventListener('mouseup', function(e) {
@@ -21,4 +15,3 @@ cats.forEach(function(cat, index){
 
 
 
-//Array.from('cat', c => c.addEventListener('mouseup', increment));

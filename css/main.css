@@ -60,27 +60,30 @@ body {
 	display: flex;
 	margin-top: 50px;
 	height: 80vh;
-	flex-direction: column;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
 	justify-content: space-around;
 	align-items: center;
 }
 
 .cat-container {
 	height: 50%;
-	width: 100%;
-	max-width: 1200px;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
+	align-items: center;
 }
 
 .cat {
-	flex: 1;
+	flex: 2;
 	min-width: 200px;
 	max-width: 500px;
 }
 
 
-#counter-text {
+.counter {
+	flex: 1;
 	display: block;
 	font-size: 45px;
 }
