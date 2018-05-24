@@ -58,49 +58,70 @@ body {
 
 .sidebar {
 	width: 250px;
-	background: red;
 	position: fixed;
+	overflow: hidden;
+	height: 100%;
+}
+.cat-list {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.cat-list li {
+	padding-left: 10px;
+	border-bottom: 5px solid white;
+	background: #e0e0ea;
 }
 
-.cat-list li {
+.cat-list p {
 	font-size: 20px;
-	line-height: 50px;
-	display: block;
-	height: 50px;
+	line-height: 120px;
+	display: inline-block;
 	vertical-align: middle;
 	padding-left: 10px;
-	border-bottom: 1px solid white;
-
 }
 
-.flex-container {
-	display: flex;
-	margin-top: 50px;
-	height: 80vh;
+.cat-thumb {
+	width: 120px;
+	line-height: 50px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.cat-presentation {
 	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	justify-content: space-around;
-	align-items: center;
+	height: 100vh;
+	text-align: center;
 }
 
 .cat-container {
-	height: 50%;
+	height: 100%;
+	width: 70%;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
+	justify-content: center;
+}
+
+.cat-name {
+	font-size: 50px;
+	margin-bottom: 30px;
+
 }
 
 .cat {
-	flex: 2;
-	min-width: 200px;
-	max-width: 500px;
+	width: 500px;
+	margin: 0 auto;
+
 }
 
 
 .counter {
-	flex: 1;
-	display: block;
-	font-size: 45px;
+	font-size: 50px;
+	margin-top: 30px;
+}
+
+.hide {
+	transform: translateY(-9999px);
 }
