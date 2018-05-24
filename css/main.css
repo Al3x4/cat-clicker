@@ -74,6 +74,17 @@ body {
 	background: #e0e0ea;
 }
 
+.cat-list li:hover {
+	cursor: pointer;
+	background: #cacada;
+}
+
+.cat-list li:hover .cat-thumb{
+	transform: translateY(-3px);
+	transform: rotate(30deg);
+}
+
+
 .cat-list p {
 	font-size: 20px;
 	line-height: 120px;
@@ -87,6 +98,8 @@ body {
 	line-height: 50px;
 	display: inline-block;
 	vertical-align: middle;
+	transition: all 500ms;
+	transition-timing-function: ease-out;
 }
 
 .cat-presentation {
@@ -123,5 +136,5 @@ body {
 }
 
 .hide {
-	transform: translateY(-9999px);
+	display: none;
 }
