@@ -65,8 +65,18 @@ body {
 	align-items: center;
 }
 
-#cat {
-	width: 500px;
+.cat-container {
+	height: 50%;
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.cat {
+	flex: 1;
+	min-width: 200px;
+	max-width: 500px;
 }
 
 
