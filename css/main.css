@@ -56,6 +56,23 @@ body {
 	font-size: 16px;
 }
 
+.sidebar {
+	width: 250px;
+	background: red;
+	position: fixed;
+}
+
+.cat-list li {
+	font-size: 20px;
+	line-height: 50px;
+	display: block;
+	height: 50px;
+	vertical-align: middle;
+	padding-left: 10px;
+	border-bottom: 1px solid white;
+
+}
+
 .flex-container {
 	display: flex;
 	margin-top: 50px;
