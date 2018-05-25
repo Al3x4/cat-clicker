@@ -1,7 +1,4 @@
-//document.addEventListener("DOMContentLoaded", function() {
-
-
-
+document.addEventListener("DOMContentLoaded", function() {
 
 let model = {
 
@@ -35,8 +32,6 @@ let model = {
 }
 
 
-
-
 let octopus = {
 
 	init : function(){
@@ -49,8 +44,6 @@ let octopus = {
 
 		//display the cuurent cat
 		catView.init();
-
-
 	},
 
 	allCats : function () {
@@ -72,19 +65,20 @@ let octopus = {
 	incrementCounter : function() {
 		model.currentCat.counter +=1;
 		catView.updateCounter();
-		console.log(this);	
 	},
 
 	flash : function(e) {
+				e.preventDefault();
 				e.target.setAttribute('src', this.getCurrentCat().animation);
 				this.incrementCounter();
 			}, 
 
 	revert : function(e) {
+				e.preventDefault();
 				e.target.setAttribute('src', this.getCurrentCat().img);	
 			} 
-}
 
+}
 
 
 let listView = {
@@ -133,7 +127,6 @@ let listView = {
 }
 
 
-
 let catView = {
 
 	init : function() {
@@ -141,11 +134,8 @@ let catView = {
 		this.catToRender = octopus.getCurrentCat();
 		this.render();
 
-
 		this.catPresentation.addEventListener('mousedown', octopus.flash.bind(octopus));
-
 		this.catPresentation.addEventListener('mouseup', octopus.revert.bind(octopus));
-
 		this.catPresentation.addEventListener('mouseout', octopus.revert.bind(octopus));
 
 	},
@@ -163,8 +153,9 @@ let catView = {
 		this.catPresentation.querySelector('.counter').innerText = octopus.getCurrentCat().counter; 
 	}
 
-
 }
+
 
 octopus.init();
 
+});
