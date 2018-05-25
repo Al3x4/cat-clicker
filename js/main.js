@@ -67,7 +67,22 @@ let octopus = {
 
 	displayCurrentCat : function () {
 		return catView.render();
-	}
+	},
+
+	incrementCounter : function() {
+		model.currentCat.counter +=1;
+		catView.updateCounter();
+		console.log(this);	
+	},
+
+	flash : function(e) {
+				e.target.setAttribute('src', this.getCurrentCat().animation);
+				this.incrementCounter();
+			}, 
+
+	revert : function(e) {
+				e.target.setAttribute('src', this.getCurrentCat().img);	
+			} 
 }
 
 
@@ -106,6 +121,7 @@ let listView = {
 				return (function() {
 							octopus.setCurrentCat(closedCat);
 							octopus.displayCurrentCat();
+							console.log(`who is it${closedCat.name}`);
 
 						});
 			})(cat)); // use IIFE to take the cat we're at in the array from this scope and copy it into the function as closedCat
@@ -121,37 +137,32 @@ let listView = {
 let catView = {
 
 	init : function() {
-		this.catPresentation = document.querySelector('.cat-presentation'); 
+		this.catPresentation = document.querySelector('.cat-container'); 
+		this.catToRender = octopus.getCurrentCat();
 		this.render();
+
+
+		this.catPresentation.addEventListener('mousedown', octopus.flash.bind(octopus));
+
+		this.catPresentation.addEventListener('mouseup', octopus.revert.bind(octopus));
+
+		this.catPresentation.addEventListener('mouseout', octopus.revert.bind(octopus));
 
 	},
 
 
 	render : function(){
 		let catToRender = octopus.getCurrentCat();
-		console.log(`This is the cat to be rendered: ${catToRender.name}`);
+	
+		this.catPresentation.innerHTML = 	`<span class="cat-name">${catToRender.name}</span>
+											<img class="cat" src="${catToRender.img}" alt="${this.catToRender.name}">
+											<span class="counter">${catToRender.counter}</span>`;	
+	},
 
-		this.catPresentation.innerHTML = `<div class="cat-container">
-											<span class="cat-name">${catToRender.name}</span>
-											<img class="cat" src="${catToRender.img}" alt="Cat">
-											<span class="counter">${catToRender.counter}</span>
-										</div>`;
+	updateCounter : function () {
+		this.catPresentation.querySelector('.counter').innerText = octopus.getCurrentCat().counter; 
+	}
 
-		this.catPresentation.addEventListener('mousedown', (function(count) {
-			return function(e) {
-				catToRender.counter +=1;
-				e.preventDefault();
-				e.target.setAttribute('src', catToRender.animation);
-			};
-		})(0));
-		
-		this.catPresentation.addEventListener('mouseup', function(e) {
-			e.target.setAttribute('src', catToRender.img);
-		});
-		this.catPresentation.addEventListener('mouseout', function(e) {
-			e.target.setAttribute('src', catToRender.img);
-		});
-		}
 
 }
 
