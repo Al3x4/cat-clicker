@@ -54,24 +54,30 @@ table {
 body {
 	font-family: sans-serif;
 	font-size: 16px;
+	display: flex;
+	flex-direction: column;
 }
 
 .sidebar {
-	width: 250px;
-	position: fixed;
-	overflow: hidden;
-	height: 100%;
+	width: 100%;
+	align-self: flex-end;
+	height: 20%;
+	margin-bottom: 0;
+	overflow: scroll;
+	flex: 1;
+	order: 2;
+
 }
 .cat-list {
 	height: 100%;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 }
 .cat-list li {
-	padding-left: 10px;
-	border-bottom: 5px solid white;
+	border-left: 5px solid white;
 	background: #e0e0ea;
+	text-align: center;
 }
 
 .cat-list li:hover {
@@ -86,15 +92,14 @@ body {
 
 
 .cat-list p {
-	font-size: 20px;
-	line-height: 120px;
+	font-size: 1.2em;
+	line-height: 1.5em;
 	display: inline-block;
 	vertical-align: middle;
-	padding-left: 10px;
 }
 
 .cat-thumb {
-	width: 120px;
+	width: 50px;
 	line-height: 50px;
 	display: inline-block;
 	vertical-align: middle;
@@ -104,8 +109,9 @@ body {
 
 .cat-presentation {
 	width: 100%;
-	height: 100vh;
+	height: 80%;
 	text-align: center;
+	flex: 2;
 }
 
 .cat-container {
@@ -118,15 +124,14 @@ body {
 }
 
 .cat-name {
-	font-size: 50px;
-	margin-bottom: 30px;
+	font-size: 2em;
+	margin-bottom: 1vh;
 
 }
 
 .cat {
-	width: 500px;
+	width: 80%;
 	margin: 0 auto;
-
 }
 
 
@@ -137,4 +142,79 @@ body {
 
 .hide {
 	display: none;
+}
+
+@media screen and (min-width: 550px) {
+	body {
+		font-family: sans-serif;
+		font-size: 16px;
+		display: block;
+	}
+	.sidebar {
+		width: 250px;
+		position: fixed;
+		overflow: hidden;
+		height: 100%;
+	}
+	.cat-list {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.cat-list li {
+		padding-left: 10px;
+		border-bottom: 5px solid white;
+		background: #e0e0ea;
+	}
+
+	.cat-list p {
+		font-size: 1.2em;
+		display: inline-block;
+		vertical-align: middle;
+		padding-left: 10px;
+	}
+
+	.cat-thumb {
+		width: 120px;
+		line-height: 50px;
+		display: inline-block;
+		vertical-align: middle;
+		transition: all 500ms;
+		transition-timing-function: ease-out;
+	}
+
+	.cat-presentation {
+		height: 100vh;
+		
+	}
+
+	.cat-container {
+		height: 100%;
+		width: 70%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.cat-name {
+		font-size: 3em;
+		margin-bottom: 3vh;
+
+	}
+
+	.cat {
+		width: 50%;
+	}
+
+
+	.counter {
+		font-size: 50px;
+		margin-top: 30px;
+	}
+
+
+}	
+
 }
