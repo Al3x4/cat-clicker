@@ -52,7 +52,7 @@ table {
 * Main CSS *
 ************/
 body {
-	font-family: sans-serif;
+	font-family: raleway, sans-serif;
 	font-size: 16px;
 	height: 100vh;
 	display: flex;
@@ -159,13 +159,14 @@ body {
 	background: #e0e0ea;
 	width: 70%;
 	max-width: 350px;
-	padding: 50px;
+	padding: 50px 50px 20px;
 }
 
 .modal-label {
 	display: block;
+	color: #6d6d6d;
 	transform: translate(5px, -30px);
-
+	transition: all 300ms;
 }
 
 .modal-input {
@@ -184,8 +185,48 @@ body {
 
 .move-up {
 	transform: translate(-5px, -60px);
+	color: #4e4e4e;
 }
 
+#submit {
+	background: #407b7b;
+	height: 50px;
+	width: 100%;
+	margin-bottom: 20px;
+	border : none;
+	transition: all 500ms;
+	font-family: raleway;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	color: #ffffff;
+	font-size: 1.1em; 
+}
+
+#submit:hover, 
+#submit:active {
+	background: #5aa2a2;
+}
+
+#cancel {
+	color:  #4e4e4e;
+	font-style: italic;
+	display: block;
+	text-align: center;
+
+}
+
+#cancel {
+	color:  #4e4e4e;
+	font-style: italic;
+	display: block;
+	text-align: center;
+
+}
+
+#cancel:hover, 
+#cancel:active {
+	color:  #b71111;
+}
 
 @media screen and (min-width: 550px) {
 	body {

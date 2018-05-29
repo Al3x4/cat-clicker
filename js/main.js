@@ -161,28 +161,25 @@ let catView = {
 
 let adminView = {
 	init : function() {
-		const labels = document.querySelectorAll('.modal-label');
-		const inputs = document.querySelectorAll('.modal-input');
+		let inputs = document.querySelectorAll('.modal-input');
 
-		//if an imnput is cilcked, it's label goes up
+		//if an input is clicked, its label goes up
 		inputs.forEach(function (input){    
-			input.addEventListener('click', function(e){
-				
+			document.addEventListener('click', function(e) {
 
-				labels.forEach(function(label) {
-					label.previousElementSibling.value === "" ? label.classList.remove('move-up') : undefined;
-				});
-				
+				e.target === input ? e.target.nextElementSibling.classList.add('move-up') : undefined;
 
-				e.target.nextElementSibling.classList.add('move-up');  
-			} )
+				//if it's not the active element and is empty, get label back down
+				input !== document.activeElement && input.value === "" ? input.nextElementSibling.classList.remove('move-up') : undefined;
+			});
+
 		});
-
 
 	}, 
 
-
-
+	resetForm : {
+		
+	}
 
 
 } 
