@@ -161,10 +161,59 @@ let catView = {
 
 let adminView = {
 	init : function() {
-		let inputs = document.querySelectorAll('.modal-input');
+		this.modal = document.querySelector('#modal-outer');
+		this.inputs = document.querySelectorAll('.modal-input');
+		this.newCat = {};
 
+		let submit = document.querySelector('#submit');
+		let cancel = document.querySelector('#cancel');
+		let admin = document.querySelector('#admin');
+		
+		//show and hide modal
+		admin.addEventListener('click', this.showModal.bind(this));
+		cancel.addEventListener('click', this.hideModal.bind(this));
+
+		submit.addEventListener('click', function(){
+			this.getNewInfo();
+			this.resetForm();
+		}.bind(this))
+
+
+		//the labels moving up and down action
+		this.formFunctionality();
+		console.log(this.newCat);
+
+
+	}, 
+
+		
+	hideModal : function() {
+		console.log(this.modal);
+		this.modal.classList.add('hide');
+	},
+
+	showModal : function(){
+		console.log(this);
+		this.modal.classList.remove('hide');
+	}, 
+
+	getNewInfo : function() {
+		this.newCat.name = document.querySelector('#name').value;
+		this.newCat.img = document.querySelector('#img').value;
+		this.newCat.animation = document.querySelector('#animation').value;
+		this.newCat.thumb = document.querySelector('#thumb').value;
+		this.newCat.clicks = document.querySelector('#clicks').value;
+	},
+
+	resetForm : function() {
+		this.inputs.forEach(function(input) {
+			input.value = "";
+		});
+	}, 
+
+	formFunctionality : function() {
 		//if an input is clicked, its label goes up
-		inputs.forEach(function (input){    
+		this.inputs.forEach(function (input){    
 			document.addEventListener('click', function(e) {
 
 				e.target === input ? e.target.nextElementSibling.classList.add('move-up') : undefined;
@@ -174,12 +223,8 @@ let adminView = {
 			});
 
 		});
-
-	}, 
-
-	resetForm : {
-		
 	}
+
 
 
 } 
