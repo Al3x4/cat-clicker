@@ -78,7 +78,13 @@ let octopus = {
 	revert : function(e) {
 				e.preventDefault();
 				e.target.setAttribute('src', this.getCurrentCat().img);	
-			} 
+			},
+
+	updateCurrentCat : function(thisNewCat) {
+		model.currentCat = thisNewCat;
+		console.log(model.currentCat);
+		console.log(model.cats);
+	}
 
 
 }
@@ -173,8 +179,10 @@ let adminView = {
 		admin.addEventListener('click', this.showModal.bind(this));
 		cancel.addEventListener('click', this.hideModal.bind(this));
 
-		submit.addEventListener('click', function(){
+		submit.addEventListener('click', function(e){
+			e.preventDefault();
 			this.getNewInfo();
+			octopus.updateCurrentCat(this.newCat).bind(this);
 			this.resetForm();
 		}.bind(this))
 
@@ -202,7 +210,7 @@ let adminView = {
 		this.newCat.img = document.querySelector('#img').value;
 		this.newCat.animation = document.querySelector('#animation').value;
 		this.newCat.thumb = document.querySelector('#thumb').value;
-		this.newCat.clicks = document.querySelector('#clicks').value;
+		this.newCat.counter = document.querySelector('#clicks').value;
 	},
 
 	resetForm : function() {
