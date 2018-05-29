@@ -44,6 +44,8 @@ let octopus = {
 
 		//display the cuurent cat
 		catView.init();
+
+		adminView.init();
 	},
 
 	allCats : function () {
@@ -77,6 +79,7 @@ let octopus = {
 				e.preventDefault();
 				e.target.setAttribute('src', this.getCurrentCat().img);	
 			} 
+
 
 }
 
@@ -130,6 +133,7 @@ let listView = {
 let catView = {
 
 	init : function() {
+		 
 		this.catPresentation = document.querySelector('.cat-container'); 
 		this.catToRender = octopus.getCurrentCat();
 		this.render();
@@ -154,6 +158,34 @@ let catView = {
 	}
 
 }
+
+let adminView = {
+	init : function() {
+		const labels = document.querySelectorAll('.modal-label');
+		const inputs = document.querySelectorAll('.modal-input');
+
+		//if an imnput is cilcked, it's label goes up
+		inputs.forEach(function (input){    
+			input.addEventListener('click', function(e){
+				
+
+				labels.forEach(function(label) {
+					label.previousElementSibling.value === "" ? label.classList.remove('move-up') : undefined;
+				});
+				
+
+				e.target.nextElementSibling.classList.add('move-up');  
+			} )
+		});
+
+
+	}, 
+
+
+
+
+
+} 
 
 
 octopus.init();

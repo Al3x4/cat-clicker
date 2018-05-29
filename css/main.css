@@ -54,17 +54,18 @@ table {
 body {
 	font-family: sans-serif;
 	font-size: 16px;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 }
 
 .sidebar {
 	width: 100%;
-	align-self: flex-end;
-	height: 20%;
+	/*align-self: flex-end;*/
 	margin-bottom: 0;
-	overflow: scroll;
-	flex: 1;
+	transition: all 500ms;
+	overflow-x: scroll;
 	order: 2;
 
 }
@@ -78,6 +79,7 @@ body {
 	border-left: 5px solid white;
 	background: #e0e0ea;
 	text-align: center;
+
 }
 
 .cat-list li:hover {
@@ -100,7 +102,6 @@ body {
 
 .cat-thumb {
 	width: 50px;
-	line-height: 50px;
 	display: inline-block;
 	vertical-align: middle;
 	transition: all 500ms;
@@ -109,14 +110,13 @@ body {
 
 .cat-presentation {
 	width: 100%;
-	height: 80%;
-	text-align: center;
 	flex: 2;
+	text-align: center;
+
 }
 
 .cat-container {
 	height: 100%;
-	width: 70%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -144,12 +144,62 @@ body {
 	display: none;
 }
 
+.modal-outer {
+	position: absolute;
+	z-index: 2;
+	background: #5d434387;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.modal-inner {
+	background: #e0e0ea;
+	width: 70%;
+	max-width: 350px;
+	padding: 50px;
+}
+
+.modal-label {
+	display: block;
+	transform: translate(5px, -30px);
+
+}
+
+.modal-input {
+	width: 100%;
+	height: 35px;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-bottom: 5px;
+	margin-top: 15px;
+	border: none;
+}
+
+.submit {
+	width: 100%;
+}
+
+.move-up {
+	transform: translate(-5px, -60px);
+}
+
+
 @media screen and (min-width: 550px) {
 	body {
 		font-family: sans-serif;
 		font-size: 16px;
 		display: block;
+		position: relative;
 	}
+
+	.nav {
+		position: fixed;
+	}
+
+
 	.sidebar {
 		width: 250px;
 		position: fixed;
@@ -186,7 +236,7 @@ body {
 
 	.cat-presentation {
 		height: 100vh;
-		
+		position: fixed;
 	}
 
 	.cat-container {
@@ -213,6 +263,7 @@ body {
 		font-size: 50px;
 		margin-top: 30px;
 	}
+
 
 
 }	

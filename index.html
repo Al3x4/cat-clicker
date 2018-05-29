@@ -7,19 +7,44 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	<nav class="admin">
+		<button>Admin</button>	
+	</nav>
+
 	<aside class="sidebar">
 		<ul class="cat-list">
-			
 		</ul>
 	</aside>
 	
 	<main class="cat-presentation">
 		<div class="cat-container">
-			
 		</div>
-
 	</main>
 
+	<div class="modal-outer" >
+			<form class="modal-inner" action="">
+				
+				<input class="modal-input" id="name" type="text">
+				<label class="modal-label" for="name">Cat's Name</label>
+				
+				<input class="modal-input" id="img" type="text">
+				<label class="modal-label" for="img" >Display Image</label>
+				
+				<input class="modal-input" id="animation" type="text">
+				<label class="modal-label" for="animation">Click Image</label>
+					
+				<input class="modal-input" id="thumb" type="text">
+				<label class="modal-label" for="thumb">Thumbnail</label>
+				
+				<input class="modal-input" id="clicks" type="number">
+				<label class="modal-label" for="clicks">Clicks</label>
+				
+				
+				<button class="submit">Submit</button>
+				<button class="cancel">Cancel</button>
+			</form>
+			
+		</div>
 
 	<script src="js/main.js"></script>
 </body>
