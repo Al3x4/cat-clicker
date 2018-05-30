@@ -75,8 +75,12 @@ let octopus = {
 
 	flash : function(e) {
 				e.preventDefault();
-				e.target.setAttribute('src', this.getCurrentCat().animation);
-				this.incrementCounter();
+				console.log(e.target.classList)
+				if(e.target.classList[0] === "cat") {
+					e.target.setAttribute('src', this.getCurrentCat().animation);
+					this.incrementCounter();
+				}
+				
 			}, 
 
 	revert : function(e) {
@@ -183,6 +187,7 @@ let catView = {
 }
 
 let adminView = {
+	
 	init : function() {
 		this.modal = document.querySelector('#modal-outer');
 		this.inputs = document.querySelectorAll('.modal-input');
@@ -204,10 +209,8 @@ let adminView = {
 			this.hideModal();
 		}.bind(this))
 
-
 		//the labels moving up and down action
 		this.formFunctionality()
-
 
 	}, 
 
