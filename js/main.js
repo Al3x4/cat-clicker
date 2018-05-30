@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+// document.addEventListener("DOMContentLoaded", function() {
 
 let model = {
 
@@ -28,6 +28,10 @@ let model = {
 		
 		this.currentCat = this.cats[0];
 	},
+
+
+
+
 
 }
 
@@ -80,10 +84,23 @@ let octopus = {
 				e.target.setAttribute('src', this.getCurrentCat().img);	
 			},
 
-	updateCurrentCat : function(thisNewCat) {
-		model.currentCat = thisNewCat;
-		console.log(model.currentCat);
-		console.log(model.cats);
+	getCurrentCatIndex : function(){
+		return model.cats.indexOf(model.currentCat);
+	},
+
+
+	updateCurrentCat : function(updatedCat) {
+		let i = this.getCurrentCatIndex();
+
+		model.cats[i].name = updatedCat.name;
+		model.cats[i].img = updatedCat.img;
+		model.cats[i].animation = updatedCat.animation;
+		model.cats[i].thumb = updatedCat.thumb;
+		model.cats[i].thumb = updatedCat.thumb;
+
+		
+		catView.init();
+		listView.init();
 	}
 
 
@@ -182,14 +199,14 @@ let adminView = {
 		submit.addEventListener('click', function(e){
 			e.preventDefault();
 			this.getNewInfo();
-			octopus.updateCurrentCat(this.newCat).bind(this);
+			octopus.updateCurrentCat(this.newCat);
 			this.resetForm();
+			this.hideModal();
 		}.bind(this))
 
 
 		//the labels moving up and down action
-		this.formFunctionality();
-		console.log(this.newCat);
+		this.formFunctionality()
 
 
 	}, 
@@ -206,6 +223,7 @@ let adminView = {
 	}, 
 
 	getNewInfo : function() {
+
 		this.newCat.name = document.querySelector('#name').value;
 		this.newCat.img = document.querySelector('#img').value;
 		this.newCat.animation = document.querySelector('#animation').value;
@@ -240,4 +258,4 @@ let adminView = {
 
 octopus.init();
 
-});
+// });
