@@ -223,8 +223,8 @@ let adminView = {
 	},
 
 	showModal : function(){
-		console.log(this);
 		this.modal.classList.remove('hide');
+		this.resetForm();
 	}, 
 
 	getNewInfo : function() {
@@ -237,9 +237,11 @@ let adminView = {
 	},
 
 	resetForm : function() {
-		this.inputs.forEach(function(input) {
-			input.value = "";
-		});
+		document.querySelector('#name').value = octopus.getCurrentCat().name;
+		document.querySelector('#img').value = octopus.getCurrentCat().img;
+		document.querySelector('#animation').value = octopus.getCurrentCat().animation;
+		document.querySelector('#thumb').value = octopus.getCurrentCat().thumb;
+		document.querySelector('#clicks').value = octopus.getCurrentCat().counter;
 	}, 
 
 	formFunctionality : function() {
