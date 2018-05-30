@@ -75,10 +75,11 @@ let octopus = {
 
 	flash : function(e) {
 				e.preventDefault();
-				console.log(e.target.classList)
+				console.log(e.target)
 				if(e.target.classList[0] === "cat") {
 					e.target.setAttribute('src', this.getCurrentCat().animation);
 					this.incrementCounter();
+					console.log('counter went up');
 				}
 				
 			}, 
@@ -96,14 +97,15 @@ let octopus = {
 	updateCurrentCat : function(updatedCat) {
 		let i = this.getCurrentCatIndex();
 
-		model.cats[i].name = updatedCat.name;
-		model.cats[i].img = updatedCat.img;
-		model.cats[i].animation = updatedCat.animation;
-		model.cats[i].thumb = updatedCat.thumb;
-		model.cats[i].thumb = updatedCat.thumb;
+		//update cat where the inputs are new
+		model.cats[i].name = updatedCat.name !== "" ? updatedCat.name : model.cats[i].name;
+		model.cats[i].img = updatedCat.img !== "" ? updatedCat.img : model.cats[i].img;
+		model.cats[i].animation = updatedCat.animation !== "" ? updatedCat.animation : model.cats[i].animation;
+		model.cats[i].thumb = updatedCat.thumb !== "" ? updatedCat.thumb : model.cats[i].thumb;
+		model.cats[i].counter = updatedCat.counter !== "" ? Number(updatedCat.counter) : model.cats[i].counter;
 
 		
-		catView.init();
+		catView.render();
 		listView.init();
 	}
 
