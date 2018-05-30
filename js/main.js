@@ -46,9 +46,10 @@ let octopus = {
 		//display the list of cats dinamically
 		listView.init();
 
-		//display the cuurent cat
+		//display the current cat
 		catView.init();
 
+		//start the form logic
 		adminView.init();
 	},
 
@@ -73,21 +74,22 @@ let octopus = {
 		catView.updateCounter();
 	},
 
+
 	flash : function(e) {
-				e.preventDefault();
-				console.log(e.target)
-				if(e.target.classList[0] === "cat") {
-					e.target.setAttribute('src', this.getCurrentCat().animation);
-					this.incrementCounter();
-					console.log('counter went up');
-				}
+		e.preventDefault(); //prevents dragging
+		console.log(e.target)
+		if(e.target.classList[0] === "cat") {
+			e.target.setAttribute('src', this.getCurrentCat().animation);
+			this.incrementCounter();
+			console.log('counter went up');
+		}
 				
-			}, 
+	}, 
 
 	revert : function(e) {
-				e.preventDefault();
-				e.target.setAttribute('src', this.getCurrentCat().img);	
-			},
+		e.preventDefault();
+		e.target.setAttribute('src', this.getCurrentCat().img);	
+	},
 
 	getCurrentCatIndex : function(){
 		return model.cats.indexOf(model.currentCat);
@@ -97,7 +99,7 @@ let octopus = {
 	updateCurrentCat : function(updatedCat) {
 		let i = this.getCurrentCatIndex();
 
-		//update cat where the inputs are new
+		//update cat where the inputs are new, else use old info
 		model.cats[i].name = updatedCat.name !== "" ? updatedCat.name : model.cats[i].name;
 		model.cats[i].img = updatedCat.img !== "" ? updatedCat.img : model.cats[i].img;
 		model.cats[i].animation = updatedCat.animation !== "" ? updatedCat.animation : model.cats[i].animation;
@@ -106,7 +108,7 @@ let octopus = {
 
 		
 		catView.render();
-		listView.init();
+		listView.render();
 	}
 
 
@@ -162,9 +164,9 @@ let listView = {
 let catView = {
 
 	init : function() {
-		 
 		this.catPresentation = document.querySelector('.cat-container'); 
 		this.catToRender = octopus.getCurrentCat();
+		
 		this.render();
 
 		this.catPresentation.addEventListener('mousedown', octopus.flash.bind(octopus));
@@ -176,10 +178,9 @@ let catView = {
 
 	render : function(){
 		let catToRender = octopus.getCurrentCat();
-	
 		this.catPresentation.innerHTML = 	`<span class="cat-name">${catToRender.name}</span>
-											<img class="cat" src="${catToRender.img}" alt="${this.catToRender.name}">
-											<span class="counter">${catToRender.counter}</span>`;	
+											 <img class="cat" src="${catToRender.img}" alt="${this.catToRender.name}">
+											 <span class="counter">${catToRender.counter}</span>`;	
 	},
 
 	updateCounter : function () {
@@ -204,15 +205,14 @@ let adminView = {
 		cancel.addEventListener('click', this.hideModal.bind(this));
 
 		submit.addEventListener('click', function(e){
-			e.preventDefault();
+			e.preventDefault(); //prevents page refresh
 			this.getNewInfo();
 			octopus.updateCurrentCat(this.newCat);
-			this.resetForm();
 			this.hideModal();
-		}.bind(this))
+		}.bind(this));
 
 		//the labels moving up and down action
-		this.formFunctionality()
+		this.formFunctionality();
 
 	}, 
 
@@ -228,7 +228,6 @@ let adminView = {
 	}, 
 
 	getNewInfo : function() {
-
 		this.newCat.name = document.querySelector('#name').value;
 		this.newCat.img = document.querySelector('#img').value;
 		this.newCat.animation = document.querySelector('#animation').value;
