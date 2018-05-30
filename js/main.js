@@ -247,7 +247,7 @@ let adminView = {
 	formFunctionality : function() {
 		//if an input is clicked, its label goes up
 		this.inputs.forEach(function (input){    
-			document.addEventListener('click', function(e) {
+			this.modal.addEventListener('click', function(e) {
 
 				e.target === input ? e.target.nextElementSibling.classList.add('move-up') : undefined;
 
@@ -255,7 +255,7 @@ let adminView = {
 				input !== document.activeElement && input.value === "" ? input.nextElementSibling.classList.remove('move-up') : undefined;
 			});
 
-		});
+		}.bind(this));
 	}
 
 
