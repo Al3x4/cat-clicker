@@ -1,10 +1,9 @@
 # Front-End Web Developer Nanodegree Program
 ## Cat Clicker
 
-A clicker game, where each click on the cat doesn't get you absolutely anything. 
 
-### Description
- - The click counter increments by 1 on each click. 
+A clicker game, where each click on the cat increments the cat counter by 1.
+
 
 ### Instructions
 - Clone this repository on your local machine.
